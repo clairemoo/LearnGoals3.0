@@ -1,0 +1,24 @@
+{
+    "name": "Learn-Goals",
+    "version": "1.0",
+    "description": "Organizes your personal educational goals and reminds you when you've set a deadline!",
+    "permissions": ["storage", "declarativeContent", "activeTab"],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "page_action": {
+        "default_popup": "index.html",
+        "default_icon": {
+            "32": "images/32_Learn_Goals.png",
+            "48": "images/48_Learn_Goals.png",
+            "128": "images/128_Learn_Goals.png"
+        }    
+    },  
+    "manifest_version": 2,
+    "icons": {
+        "32": "images/32_Learn_Goals.png",
+        "48": "images/48_Learn_Goals.png",
+        "128" : "images/128_Learn_Goals.png"
+    }
+  }
