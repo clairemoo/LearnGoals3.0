@@ -1,21 +1,43 @@
 import React from 'react';
+import ActiveGoals from './ActiveGoals';
+import CompletedGoals from './CompletedGoals';
+import AddGoal from './AddGoal';
+import Buttons from './Buttons'
+import { connect } from 'react-redux'
 
 export default class Main extends React.Component {
-    constructor() {
-        super();
-        this.state= {}
-    };
 
     render() {
+        // let componentToDisplay = () => {
+        //     switch (this.props.currentPage) {
+        //         case 'buttons':
+        //             return <Buttons />
+        //         case 'activeGoals':
+        //             return <ActiveGoals />
+        //         case 'completedGoals':
+        //             return <CompletedGoals />
+        //         case 'addGoal':
+        //             return <AddGoal />
+        //         default:
+        //             return <h1>Not an option!</h1>
+        //     }
+        // }
         return (
-            <div class="form-control-sm">
-            <button id="active-goals" class="btn btn-outline-success btn-sm" type="button">Go to My Active Goals</button>
-            <hr />
-            <button id="completed-goals" class="btn btn-outline-danger btn-sm" type="button">See What You've Accomplished</button>
-            <hr />
-            <button id="add-goal" class ="btn btn-info btn-block btn-sm" type="button">Add To Goals</button>
-            <hr />
-          </div>
+        <Buttons />
         )
     }
 }
+
+const mapState = state => {
+    return {
+        currentPage: state.currentPage
+    }
+}     
+
+// const mapDispatch = dispatch => {
+//     return {
+//         changePage: (newPage) => dispatch(changePage(newPage))
+//     }
+// }
+
+export default connect(mapState)(Main)
