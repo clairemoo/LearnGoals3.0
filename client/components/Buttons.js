@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changePage } from '../store'
+import { changePage, setUrl } from '../store'
 
 class Buttons extends React.Component {
     constructor() {
@@ -11,7 +11,6 @@ class Buttons extends React.Component {
     };
 
     clickActive() {
-       chrome.extension.getBackgroundPage().console.log('We clicked active')
        this.props.changePage('activeGoals');
     }
 
@@ -21,10 +20,13 @@ class Buttons extends React.Component {
 
     clickAdd() {
         this.props.changePage('addGoal');
+        chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+            let url = tabs[0].url;
+            this.props.setUrl(url);
+        });
     }
 
     render() {
-        chrome.extension.getBackgroundPage().console.log('current page:', this.props.currentPage);
         return (
             <div class="form-control-sm">
                 <button 
@@ -64,7 +66,8 @@ class Buttons extends React.Component {
     
     const mapDispatch = dispatch => {
         return {
-            changePage: (newPage) => dispatch(changePage(newPage))
+            changePage: (newPage) => dispatch(changePage(newPage)),
+            setUrl: (url) => dispatch(setUrl(url))
         }
     }
     

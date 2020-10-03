@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changePage } from '../store'
 
-chrome.extension.getBackgroundPage().console.log('This file ran')
-
 class ActiveGoals extends React.Component {
     constructor() {
         super();

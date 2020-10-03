@@ -16,7 +16,7 @@ class CompletedGoals extends React.Component {
         return (
         <button 
         id="back" 
-        className="btn btn-danger btn-sm" 
+        class="btn btn-danger btn-sm" 
         type="button"
         onClick={this.clickBack}>
             Back

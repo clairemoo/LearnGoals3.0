@@ -27,10 +27,7 @@ class Main extends React.Component {
     }
 
     render() {
-        chrome.extension.getBackgroundPage().console.log('Main rendering');
-        chrome.extension.getBackgroundPage().console.log('current page', this.props.currentPage);
         let componentToDisplay = this.whichPage();
-        chrome.extension.getBackgroundPage().console.log('component to display', componentToDisplay);
         return (componentToDisplay)
     }
 }
