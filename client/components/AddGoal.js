@@ -26,18 +26,43 @@ class AddGoal extends React.Component {
     }
 
     handleSubmit() {
-        const goal = {
+        let allData;
+        const newGoal = {
             name: this.state.name,
             url: this.props.url,
             type: this.state.type,
             complete: false
         }
+
+        // chrome.storage.sync.get(['goals'], function(result) {
+        //     if (result) {
+        //         data = {goals: [...goals, newGoal]}
+        //         allData = data
+        //     } else {
+        //         allData = {goals: [newGoal]}
+        //     }
+        //     chrome.storage.sync.set(allData)
+        // })
+        // chrome.storage.sync.set({goals: [newGoal]})
         // chrome.storage.sync.get(['goals'], function (result) {
         //     if (result === null) {
-                chrome.storage.sync.set({goals: [goal]})
-            // } else {
-            //     result.push(goal);
-            // }
+        //         chrome.storage.sync.set({goals: [newGoal]})
+        //     } else {
+        //         const updatedGoals = result.push(newGoal);
+        //         chrome.storage.sync.set({goals: updatedGoals})
+        //     }
+        // })
+
+        // chrome.storage.sync.get('goals', function (data) {
+        //     if (data) {
+        //         data = [...data, newGoal]
+        //         goals = data;
+        //     } else {
+        //         goals = [newGoal];
+        //     }
+        //     chrome.storage.sync.set({'goals': goals})
+        // })
+        
     }
 
     render () {
