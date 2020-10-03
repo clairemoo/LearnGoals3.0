@@ -7,11 +7,11 @@ class AddGoal extends React.Component {
         super();
         this.state = {
             name: '',
-            type: '',
+            type: ''
         }
         this.clickBack = this.clickBack.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     clickBack() {
@@ -19,17 +19,10 @@ class AddGoal extends React.Component {
     }
 
     handleChange(e) {
-        if (e.target.name === 'name') {
-            this.setState({
-                name: e.target.value
-            })
-        } else {
-            if (e.target.name === 'type') {
-                this.setState({
-                    type: e.target.value
-                })
-            }
-        }
+        const currentKey = e.target.name;
+        this.setState({
+            [ currentKey ] : e.target.value,
+        });
     }
 
     handleSubmit() {
@@ -54,18 +47,18 @@ class AddGoal extends React.Component {
                 <hr />
                 <div>
                     <input 
+                        value={this.state.name}
+                        onChange={this.handleChange}
                         type="text" 
                         name="name" 
-                        onChange={this.handleChange}
                         placeholder="Name of Goal"
-                        value={this.state.name}
                     />
                 </div>
                 <hr />
                 <p>{url}</p>
                 <hr />
                 <div>
-                    <select name="type" onChange={this.handleChange} value={this.state.type}>
+                    <select value={this.state.type} onChange={this.handleChange} name="type">
                         <option>Type</option> 
                         <option>Read</option>
                         <option>Watch</option>
