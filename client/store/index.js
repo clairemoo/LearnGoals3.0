@@ -1,6 +1,7 @@
 import { createStore } from 'redux';
 
 export const GET_GOALS = 'GET_GOALS';
+export const SET_GOAL = 'SET_GOAL'
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 
 export const getGoals = (goals) => ({
@@ -8,21 +9,24 @@ export const getGoals = (goals) => ({
   goals
 })
 
+export const setGoal = (goal) => ({
+  type: SET_GOAL,
+  goal
+})
+
 export const changePage = (page) => {
-  chrome.extension.getBackgroundPage().console.log('Changepage action creator ran')
   return {
     type: CHANGE_PAGE,
     page
   }
 }
-chrome.extension.getBackgroundPage().console.log('The reducer file loaded')
-store.dispatch(changePage('buttons'))
 
-export const dispatchPageChange = (newPage) => {
-  chrome.extension.getBackgroundPage().console.log('Dispatch pageChange ran')
-    chrome.extension.getBackgroundPage().console.log('Dispatch pageChange ran')
-    dispatch(changePage(newPage))
-}
+chrome.extension.getBackgroundPage().console.log('The reducer file loaded')
+
+// export const dispatchPageChange = (newPage) => {
+//     chrome.extension.getBackgroundPage().console.log('Dispatch pageChange ran')
+//     dispatch(changePage(newPage))
+// }
 
 const initialState = {
   goals: [],
@@ -39,7 +43,7 @@ function reducer (state = initialState, action) {
         return state;  
     }
   }
-  
+
 const store = createStore(reducer);
 
 export default store;

@@ -5,26 +5,33 @@ import AddGoal from './AddGoal';
 import Buttons from './Buttons'
 import { connect } from 'react-redux'
 
-export default class Main extends React.Component {
+class Main extends React.Component {
+    constructor() {
+        super();
+        this.whichPage = this.whichPage.bind(this)
+    }
+
+    whichPage() {
+        switch (this.props.currentPage) {
+            case 'buttons':
+                return <Buttons />
+            case 'activeGoals':
+                return <ActiveGoals />
+            case 'completedGoals':
+                return <CompletedGoals />
+            case 'addGoal':
+                return <AddGoal />
+            default:
+                return <h1>Not an option!</h1>
+        }
+    }
 
     render() {
-        // let componentToDisplay = () => {
-        //     switch (this.props.currentPage) {
-        //         case 'buttons':
-        //             return <Buttons />
-        //         case 'activeGoals':
-        //             return <ActiveGoals />
-        //         case 'completedGoals':
-        //             return <CompletedGoals />
-        //         case 'addGoal':
-        //             return <AddGoal />
-        //         default:
-        //             return <h1>Not an option!</h1>
-        //     }
-        // }
-        return (
-        <Buttons />
-        )
+        chrome.extension.getBackgroundPage().console.log('Main rendering');
+        chrome.extension.getBackgroundPage().console.log('current page', this.props.currentPage);
+        let componentToDisplay = this.whichPage();
+        chrome.extension.getBackgroundPage().console.log('component to display', componentToDisplay);
+        return (componentToDisplay)
     }
 }
 
@@ -33,11 +40,5 @@ const mapState = state => {
         currentPage: state.currentPage
     }
 }     
-
-// const mapDispatch = dispatch => {
-//     return {
-//         changePage: (newPage) => dispatch(changePage(newPage))
-//     }
-// }
 
 export default connect(mapState)(Main)

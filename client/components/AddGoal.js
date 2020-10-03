@@ -9,7 +9,7 @@ class AddGoal extends React.Component {
     }
 
     clickBack() {
-        this.props.changePage('main');
+        this.props.changePage('buttons');
     }
 
     render() {

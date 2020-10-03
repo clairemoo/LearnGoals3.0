@@ -11,19 +11,19 @@ class ActiveGoals extends React.Component {
     }
 
     clickBack() {
-        this.props.changePage('main');
+        this.props.changePage('buttons');
     }
 
     render() {
-        // <button 
-        // id="back" 
-        // className="btn btn-danger btn-sm" 
-        // type="button"
-        // onClick={this.clickBack}>
-        //     Back
-        // </button>
+        chrome.extension.getBackgroundPage().console.log('This file ran')
         return (
-        <h1>HIIIIII</h1>
+            <button 
+            id="back" 
+            class="btn btn-danger btn-sm" 
+            type="button"
+            onClick={this.clickBack}>
+                Back
+            </button>
         )
     }
 }

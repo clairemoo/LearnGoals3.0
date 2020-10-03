@@ -1,5 +1,5 @@
 {
-    "name": "Learn-Goals",
+    "name": "LearnGoals",
     "version": "1.0",
     "description": "Organizes your personal educational goals and reminds you when you've set a deadline!",
     "permissions": ["storage", "declarativeContent", "activeTab"],

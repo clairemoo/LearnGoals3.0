@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { changePage } from '../store'
 
 class Buttons extends React.Component {
     constructor() {
@@ -8,10 +9,6 @@ class Buttons extends React.Component {
         this.clickCompleted = this.clickCompleted.bind(this)
         this.clickAdd = this.clickAdd.bind(this);
     };
-
-    componentDidMount() {
-        this.props.changePage('main')
-    }
 
     clickActive() {
        chrome.extension.getBackgroundPage().console.log('We clicked active')
@@ -27,11 +24,12 @@ class Buttons extends React.Component {
     }
 
     render() {
+        chrome.extension.getBackgroundPage().console.log('current page:', this.props.currentPage);
         return (
             <div class="form-control-sm">
                 <button 
                     id="active-goals" 
-                    className="btn btn-outline-success btn-sm" 
+                    class="btn btn-outline-success btn-sm" 
                     type="button"
                     onClick={this.clickActive}>
                         Go to My Active Goals
@@ -39,7 +37,7 @@ class Buttons extends React.Component {
                 <hr />
                 <button 
                     id="completed-goals" 
-                    className="btn btn-outline-danger btn-sm" 
+                    class="btn btn-outline-danger btn-sm" 
                     type="button"
                     onClick={this.clickCompleted}>
                         See What You've Accomplished
@@ -47,7 +45,7 @@ class Buttons extends React.Component {
                 <hr />
                 <button 
                     id="add-goal" 
-                    className ="btn btn-info btn-block btn-sm" 
+                    class="btn btn-info btn-block btn-sm" 
                     type="button"
                     onClick={this.clickAdd}>
                         Add To Goals
