@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changePage } from '../store'
+import { changePage } from '../store';
+import SingleCompletedGoal from './SingleCompletedGoal'
 
 class CompletedGoals extends React.Component {
     constructor() {
@@ -14,20 +15,34 @@ class CompletedGoals extends React.Component {
 
     render() {
         return (
-        <button 
-        id="back" 
-        class="btn btn-danger btn-sm" 
-        type="button"
-        onClick={this.clickBack}>
-            Back
-        </button>
+            <div class>
+                {this.props.goals.length ? (
+                    <ul class="list-group">{this.props.goals.map(goal => {
+                        return (
+                            <div>
+                        <SingleCompletedGoal key={goal.name} currentGoal={goal} />    
+                        </div>
+                        )})}
+                    </ul>
+                ) : (
+                    <h4 class="error">You don't have any completed goals yet!</h4>
+                )}
+                <button 
+                id="back" 
+                class="btn btn-danger btn-sm btn-block" 
+                type="button"
+                onClick={this.clickBack}>
+                    Back
+                </button>
+            </div>
         )
     }
 }
 
 const mapState = state => {
     return {
-        currentPage: state.currentPage
+        currentPage: state.currentPage,
+        goals: state.goals
     }
 }     
 

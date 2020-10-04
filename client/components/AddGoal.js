@@ -26,7 +26,7 @@ class AddGoal extends React.Component {
     }
 
     handleSubmit() {
-        let allData;
+        let updatedGoals;
         const newGoal = {
             name: this.state.name,
             url: this.props.url,
@@ -34,53 +34,33 @@ class AddGoal extends React.Component {
             complete: false
         }
 
-        // chrome.storage.sync.get(['goals'], function(result) {
-        //     if (result) {
-        //         data = {goals: [...goals, newGoal]}
-        //         allData = data
-        //     } else {
-        //         allData = {goals: [newGoal]}
-        //     }
-        //     chrome.storage.sync.set(allData)
-        // })
-        // chrome.storage.sync.set({goals: [newGoal]})
-        // chrome.storage.sync.get(['goals'], function (result) {
-        //     if (result === null) {
-        //         chrome.storage.sync.set({goals: [newGoal]})
-        //     } else {
-        //         const updatedGoals = result.push(newGoal);
-        //         chrome.storage.sync.set({goals: updatedGoals})
-        //     }
-        // })
-
-        // chrome.storage.sync.get('goals', function (data) {
-        //     if (data) {
-        //         data = [...data, newGoal]
-        //         goals = data;
-        //     } else {
-        //         goals = [newGoal];
-        //     }
-        //     chrome.storage.sync.set({'goals': goals})
-        // })
-        
+        chrome.storage.sync.get(['goals'], function(result) {
+            let goals = result.goals;
+            if (goals) {
+                goals.push(newGoal);
+                updatedGoals = goals;
+            } else {
+                updatedGoals = [newGoal]
+            }
+            chrome.storage.sync.set({goals: updatedGoals})
+        })
     }
 
     render () {
         const url = `${this.props.url.slice(0, 40)}...`
         return (
             <form onSubmit={this.handleSubmit} class="form-control-sm">
-                <hr />
                 <div>
+                    <hr />
+                    <label for="name">Name: </label>
                     <input 
                         value={this.state.name}
                         onChange={this.handleChange}
                         type="text" 
                         name="name" 
-                        placeholder="Name of Goal"
+                        placeholder={this.props.url}
                     />
                 </div>
-                <hr />
-                <p>{url}</p>
                 <hr />
                 <div>
                     <select value={this.state.type} onChange={this.handleChange} name="type">
@@ -88,9 +68,7 @@ class AddGoal extends React.Component {
                         <option>Read</option>
                         <option>Watch</option>
                         <option>Listen</option>
-                        <option>Give</option>
-                        <option>Sign</option>
-                        <option>Share</option>
+                        <option>Participate</option>
                         <option>Other</option>
                     </select>
                 </div>

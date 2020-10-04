@@ -1,5 +1,3 @@
-// chrome.runtime.onInstalled.addListener(function() {
-// });
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
      chrome.declarativeContent.onPageChanged.addRules([
      {
@@ -15,7 +13,3 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
        ]
      }])
   })
-
-// chrome.storage.sync.get(['goals'], function(result) {
-//     console.log('Value currently is ' + result.goals)
-//   });

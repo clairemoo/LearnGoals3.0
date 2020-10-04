@@ -1,4 +1,18 @@
-.center {
-    display: flex;
-    align-items: center;
+.parent-div {
+    width: 250px;
+    height: auto;
+} 
+
+.right {
+    text-align: right;
+    color: gray;
+    font-size: small;
+}
+
+.right:hover {
+    color: black
+}
+
+.error {
+    color: red;
 }
