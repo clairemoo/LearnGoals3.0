@@ -14,7 +14,6 @@ class ActiveGoals extends React.Component {
     }
 
     render() {
-        chrome.extension.getBackgroundPage().console.log(this.props.goals)
         return (
             <div class>
                 {this.props.goals.length ? (
@@ -26,7 +25,7 @@ class ActiveGoals extends React.Component {
                         )})}
                     </ul>
                 ) : (
-                    <h4 class="error">You don't have any goals yet!</h4>
+                    <h4 class="error">You don't have any goals currently!</h4>
                 )}
                 <button 
                 id="back" 

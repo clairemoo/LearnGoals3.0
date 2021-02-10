@@ -43,7 +43,7 @@ class Buttons extends React.Component {
             <div class="form-control-sm">
                 <button 
                     id="active-goals" 
-                    class="btn btn-outline-success btn-sm btn-block" 
+                    class="btn btn-outline-secondary btn-sm btn-block" 
                     type="button"
                     onClick={this.clickActive}>
                         Go to My Active Goals
@@ -51,7 +51,7 @@ class Buttons extends React.Component {
                 <hr />
                 <button 
                     id="completed-goals" 
-                    class="btn btn-outline-danger btn-sm btn-block" 
+                    class="btn btn-outline-info btn-sm btn-block" 
                     type="button"
                     onClick={this.clickCompleted}>
                         See What You've Accomplished
@@ -59,7 +59,7 @@ class Buttons extends React.Component {
                 <hr />
                 <button 
                     id="add-goal" 
-                    class="btn btn-info btn-block btn-sm btn-block" 
+                    class="btn btn-warning btn-block btn-sm btn-block" 
                     type="button"
                     onClick={this.clickAdd}>
                         Add To Goals

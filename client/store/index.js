@@ -23,8 +23,6 @@ export const setUrl = url => {
   }
 }
 
-chrome.storage.sync.get(null, function (data) {chrome.extension.getBackgroundPage().console.log(data)});
-
 const initialState = {
   goals: [],
   currentPage: 'buttons',
